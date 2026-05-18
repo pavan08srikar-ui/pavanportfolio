@@ -44,6 +44,8 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div id="tsparticles"></div>
+        <div class="mouse-glow"></div>
         <div class="hero-container">
             <div class="hero-content">
                 <h1 class="hero-title">
@@ -71,9 +73,8 @@
                 </div>
             </div>
             <div class="hero-image">
-                <div class="avatar-container">
-                    <div class="avatar"></div>
-                    <div class="avatar-ring"></div>
+                <div class="spline-container">
+                    <spline-viewer url="https://prod.spline.design/PyzDhpQ9E5f1E3MT/scene.splinecode"></spline-viewer>
                 </div>
             </div>
         </div>
@@ -198,76 +199,65 @@
                 <div class="project-card">
                     <div class="project-image">
                         <div class="project-placeholder">
-                            <i class="fas fa-brain"></i>
+                            <i class="fas fa-robot"></i>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Neural Style Transfer</h3>
+                        <h3 class="project-title">Hybrid AI-Driven for Student Career</h3>
                         <p class="project-description">
-                            Deep learning application that applies artistic styles to images using convolutional neural networks.
+                            Developed an AI-driven SaaS platform creating a personalized 'digital twin' of a student for continuous career guidance. Built with modular architecture integrating AI APIs, skill assessment engines, and resume parsing.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React.js</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">OpenAI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/pavanShankar-s/Digital-Career-Twin" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Chemotherapy Response Prediction</h3>
+                        <p class="project-description">
+                            Built a machine learning model predicting chemotherapy response in ER+ breast cancer patients with 92.73% accuracy using gene expression profiles and Random Forest with SMOTE.
                         </p>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">Random Forest</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="project-image">
                         <div class="project-placeholder">
-                            <i class="fas fa-comments"></i>
+                            <i class="fas fa-graduation-cap"></i>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Chatbot with NLP</h3>
+                        <h3 class="project-title">Learnify - Personalised Learning</h3>
                         <p class="project-description">
-                            Intelligent chatbot powered by natural language processing for customer support automation.
+                            Designed and developed a personalised learning model integrating AI-driven adaptive learning with human-led alumni mentoring and continuous feedback loops.
                         </p>
                         <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">AI/ML</span>
+                            <span class="tech-tag">Adaptive Learning</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-eye"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Object Detection System</h3>
-                        <p class="project-description">
-                            Real-time object detection system using YOLO algorithm for computer vision applications.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">YOLO</span>
-                            <span class="tech-tag">OpenCV</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                            <a href="#" class="project-link">
+                            <a href="https://github.com/Vickyyy1118/Learnify" target="_blank" class="project-link">
                                 <i class="fab fa-github"></i> GitHub
                             </a>
                         </div>
@@ -337,6 +327,10 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
+
