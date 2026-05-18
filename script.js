@@ -281,31 +281,112 @@ notificationStyles.textContent = `
 `;
 document.head.appendChild(notificationStyles);
 
-// Cursor trail effect (optional visual enhancement)
-function createCursorTrail() {
-    const trail = document.createElement('div');
-    trail.style.cssText = `
-        position: fixed;
-        width: 20px;
-        height: 20px;
-        background: radial-gradient(circle, rgba(0, 212, 255, 0.6), transparent);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        transition: transform 0.1s ease;
-    `;
-    document.body.appendChild(trail);
+// Premium Hero Interactions
+function initHeroAnimations() {
+    console.log("Initializing premium hero animations...");
     
-    document.addEventListener('mousemove', (e) => {
-        trail.style.left = e.clientX - 10 + 'px';
-        trail.style.top = e.clientY - 10 + 'px';
-    });
+    // 1. Mouse Glow Tracking
+    const glow = document.querySelector('.mouse-glow');
+    const hero = document.querySelector('.hero');
+    
+    if (glow && hero && typeof gsap !== 'undefined') {
+        const xTo = gsap.quickTo(glow, "left", { duration: 0.8, ease: "power3.out" });
+        const yTo = gsap.quickTo(glow, "top", { duration: 0.8, ease: "power3.out" });
+
+        hero.addEventListener('mousemove', (e) => {
+            const rect = hero.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            xTo(x);
+            yTo(y);
+            gsap.to(glow, { opacity: 0.8, scale: 1, duration: 0.3 });
+        });
+
+        hero.addEventListener('mouseleave', () => {
+            gsap.to(glow, { opacity: 0, scale: 0.5, duration: 0.5 });
+        });
+    }
+
+    // 2. Magical Sparkles (tsParticles)
+    if (typeof tsParticles !== 'undefined') {
+        tsParticles.load("tsparticles", {
+            fpsLimit: 60,
+            particles: {
+                number: { value: 100, density: { enable: true, area: 800 } },
+                color: { value: ["#00d4ff", "#ff00ff", "#ffffff", "#00ff88"] },
+                shape: { type: "star" },
+                opacity: {
+                    value: { min: 0.1, max: 1 },
+                    animation: { 
+                        enable: true, 
+                        speed: 2, 
+                        minimumValue: 0.1,
+                        sync: false,
+                        startValue: "random"
+                    }
+                },
+                size: { value: { min: 1, max: 3 } },
+                move: {
+                    enable: true,
+                    speed: 0.5,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    outModes: "out"
+                },
+                rotate: {
+                    value: 0,
+                    random: true,
+                    animation: { enable: true, speed: 5 }
+                },
+                twinkle: {
+                    particles: { enable: true, color: "#ffffff", frequency: 0.05, opacity: 1 }
+                }
+            },
+            interactivity: {
+                events: { 
+                    onHover: { enable: true, mode: "bubble" },
+                    onClick: { enable: true, mode: "push" }
+                },
+                modes: { 
+                    bubble: { distance: 200, size: 5, duration: 0.4, opacity: 1, color: "#ffffff" },
+                    push: { quantity: 4 }
+                }
+            },
+            detectRetina: true
+        });
+    }
+
+    // 3. 3D Character Entrance & Hover Parallax
+    if (typeof gsap !== 'undefined') {
+        gsap.from(".spline-container", {
+            scale: 0.5,
+            opacity: 0,
+            duration: 2.5,
+            ease: "elastic.out(1, 0.5)",
+            delay: 0.5
+        });
+
+        // Interactive parallax for the character container
+        window.addEventListener('mousemove', (e) => {
+            const x = (e.clientX - window.innerWidth / 2) * 0.015;
+            const y = (e.clientY - window.innerHeight / 2) * 0.015;
+            gsap.to(".spline-container", {
+                x: x,
+                y: y,
+                rotationY: x * 0.5,
+                rotationX: -y * 0.5,
+                duration: 1.5,
+                ease: "power2.out"
+            });
+        });
+    }
 }
 
-// Initialize cursor trail on desktop only
-if (window.innerWidth > 768) {
-    createCursorTrail();
-}
+// Initialize on load
+window.addEventListener('load', initHeroAnimations);
+
 
 // Theme toggle functionality (bonus feature)
 function createThemeToggle() {
@@ -414,3 +495,4 @@ createLoadingScreen();
 // Console welcome message
 console.log('%c🚀 Welcome to Pavan\'s Portfolio!', 'color: #00d4ff; font-size: 20px; font-weight: bold;');
 console.log('%cFeel free to explore my projects and get in touch!', 'color: #00ff88; font-size: 14px;');
+
